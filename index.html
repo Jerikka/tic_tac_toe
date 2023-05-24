@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <!-- Header -->
+            <h1 id="title">Tic Tac Toe</h1>
+
+            <!-- Instructions -->
+            <h3 class="instructions">Instructions:</h3>
+            <p class="instructions">
+                <ol>
+                  <li>The first player to get 3 of their marks in a row (horizontally, vertically, or diagonally) is the winner!!</li>
+                  <li>If all nine square are full before someone can win, it is a draw & the game is over!!</li>
+                  <li>Have fun!</li>  
+                </ol>
+            </p>
+            <!-- This is the board -->
+            <div id="board">
+                <div id="0" class="cell right-border bottom-border"></div>
+                <div id="1" class="cell right-border bottom-border"></div>
+                <div id="2" class="cell bottom-border"></div>
+                <div id="3" class="cell right-border bottom-border"></div>
+                <div id="4" class="cell right-border bottom-border"></div>
+                <div id="5" class="cell bottom-border"></div>
+                <div id="6" class="cell right-border"></div>
+                <div id="7" class="cell right-border"></div>
+                <div id="8" class="cell"></div>
+            </div>
+             <!-- Game Over -->
+             <div id="game-over-space" hidden>
+                <h2 class="game-over">Game Over</h2>
+                <button id="button">Restart</button>
+             </div>
+        </main>
+    <script src="tic.js"></script>
+    </body>
+</html>

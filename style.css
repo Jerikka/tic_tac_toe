@@ -1,0 +1,90 @@
+
+body {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: #460C68;
+    color: white;
+}
+
+:root {
+    --winning-blocks:  gray;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+h1 {
+    color: #F56EB3;
+}
+
+.cell {
+    color: #F56EB3;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.right-border {
+    border-right: 0.2em solid #CB1C8D;
+}
+
+.bottom-border {
+    border-bottom: 0.2em solid #CB1C8D; 
+}
+
+#game-over-space {
+    text-align: center;
+    border: 6px solid #CB1C8D;
+    padding: 50px;
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.game-over {
+    font-size: 25px;
+    color: white;
+    margin-top: 0px;
+}
+
+ol {
+    color: white; 
+}
+
+h3 {
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #F56EB3;
+    border-color: black;
+    font-size: 18px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
