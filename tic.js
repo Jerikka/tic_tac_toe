@@ -1,9 +1,11 @@
 const cells = [...document.getElementsByClassName("cell")];
-let playerText = document.getElementById('title');
-let playAgainBtn = document.getElementById('button');
-let gameOverSpace = document.getElementById('game-over-space');
+const gameOverMessage = document.getElementById('gameOverMessage');
+const playAgainBtn = document.getElementById('button');
+const gameOverSpace = document.getElementById('game-over-space');
 
+let playerCount = 0;
 let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks')
+let drawIndicator = getComputedStyle(document.body).getPropertyValue('--draw-blocks')
 
 const playerOne = "X";
 const playerTwo = "O";
@@ -18,22 +20,29 @@ const gameStart = () => {
 function cellClicked(event) {
     const id = event.target.id
 
-    if(!gameState[id]){
+    if(!gameState[id] && playerCount < 9){
         gameState[id] = currentPlayer
         event.target.innerText = currentPlayer
 
         if(winningPlayer() !==false){
-            playerText = `${currentPlayer} has won!`
+            gameOverMessage.innerText = `${currentPlayer} has won! Let's play again!`
             let winning_blocks = winningPlayer()
-
-            winning_blocks.map( cell => cells[cell].style.backgroundColor=winnerIndicator)
+            playerCount = 10
+            winning_blocks.map(cell => cells[cell].style.backgroundColor=winnerIndicator)
             gameOverSpace.hidden = false;
-            return;
+            return
         }
-
+        playerCount++
         currentPlayer = currentPlayer == playerOne ? playerTwo: playerOne;
     }
+
+    if (playerCount === 9) {
+        cells.forEach(cell => cell.style.color = drawIndicator);
+        gameOverSpace.hidden = false;
+        gameOverMessage.innerText = "It's a draw, let's play again!"
+    }
 }
+
 
 const winningCombos = [
     [0, 1, 2],
@@ -55,7 +64,7 @@ function winningPlayer() {
         if(gameState[a] && (gameState[a] == gameState[b] && gameState[a] == gameState[c])) {
             return [a, b, c]
         }
-    }
+    } 
     return false;
 }
 
@@ -63,14 +72,14 @@ playAgainBtn.addEventListener('click', restart)
 
 function restart() {
     gameState.fill(null)
+    playerCount = 0
 
     cells.forEach( cell => {
         cell.innerText = ''
         cell.style.backgroundColor='';
+        cell.style.color = "#F56EB3"
         gameOverSpace.hidden=true;
     })
-
-    playerText = 'Tic Tac Toe'
 
     currentPlayer = playerOne
 };
